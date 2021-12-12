@@ -3,14 +3,6 @@ package tokenizer
 import token.*
 
 class StartState(private val tokens: MutableList<Token>): State {
-    override fun isEOF(): Boolean {
-        return false
-    }
-
-    override fun getError(): Exception? {
-        return null
-    }
-
     override fun consume(c: Char): State {
         when (c) {
             '(' -> tokens.add(Brace(true))

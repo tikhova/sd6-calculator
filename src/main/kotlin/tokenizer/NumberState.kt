@@ -6,14 +6,6 @@ import token.Token
 class NumberState(digit: Char, private val tokens: MutableList<Token>): State {
     private val numberStringBuilder: StringBuilder = StringBuilder().append(digit)
 
-    override fun isEOF(): Boolean {
-        return false
-    }
-
-    override fun getError(): Exception? {
-        return null
-    }
-
     override fun consume(c: Char): State {
         if (Character.isDigit(c)) {
             numberStringBuilder.append(c)
