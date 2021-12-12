@@ -7,6 +7,7 @@ import token.Token
 
 
 class ParserVisitor(): TokenVisitor {
+
     override fun visit(token: NumberToken) {
         TODO("Not yet implemented")
     }

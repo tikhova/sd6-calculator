@@ -8,6 +8,10 @@ class Brace(private val opening: Boolean): Token {
     }
 
     override fun accept(visitor: TokenVisitor) {
-        TODO("Not yet implemented")
+        visitor.visit(this)
+    }
+
+    fun isOpening(): Boolean {
+        return opening
     }
 }

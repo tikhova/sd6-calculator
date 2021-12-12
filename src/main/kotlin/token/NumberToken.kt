@@ -8,6 +8,6 @@ class NumberToken(private val number: Long) : Token {
     }
 
     override fun accept(visitor: TokenVisitor) {
-        TODO("Not yet implemented")
+        visitor.visit(this)
     }
 }
