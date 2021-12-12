@@ -1,8 +1,12 @@
 import tokenizer.Tokenizer
+import visitor.PrintVisitor
 
 fun main(args: Array<String>) {
     val expression = args.joinToString("")
-    val state = Tokenizer().tokenize(expression)
-    println(state.getTokens().joinToString(" ") { token -> token.toString() })
-    println(state.getError())
+    try {
+        val state = Tokenizer().tokenize(expression)
+        PrintVisitor(state.getTokens()).printExpression()
+    } catch (e: Exception) {
+        print(e)
+    }
 }
