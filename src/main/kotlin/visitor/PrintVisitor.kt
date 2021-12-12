@@ -9,7 +9,10 @@ class PrintVisitor(private val tokens: List<Token>): TokenVisitor {
     private val tokenStrings: ArrayList<String> = arrayListOf()
 
     fun printExpression() {
-        tokens.forEach { token -> token.accept(this) }
+        if (tokenStrings.isEmpty() && tokens.isNotEmpty()) {
+            tokens.forEach { token -> token.accept(this) }
+        }
+
         println(tokenStrings.joinToString(" "))
     }
 

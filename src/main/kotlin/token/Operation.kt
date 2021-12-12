@@ -6,4 +6,6 @@ abstract class Operation: Token {
     override fun accept(visitor: TokenVisitor) {
         visitor.visit(this)
     }
+
+    abstract fun getPriority(): Int
 }
