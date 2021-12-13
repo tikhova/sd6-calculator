@@ -11,7 +11,7 @@ class StartState(private val tokens: MutableList<Token>): State {
             '-', '–' -> tokens.add(SubOperation())
             '*' -> tokens.add(MulOperation())
             '/' -> tokens.add(DivOperation())
-            0.toChar() -> return EndState(tokens)
+            '\n' -> return EndState(tokens)
             ' ' -> return this
             else ->  return if (c.isDigit()) NumberState(c, tokens) else ErrorState(c, tokens)
         }
