@@ -8,10 +8,10 @@ class StartState(private val tokens: MutableList<Token>): State {
             '(' -> tokens.add(Brace(true))
             ')' -> tokens.add(Brace(false))
             '+' -> tokens.add(AddOperation())
-            '-' -> tokens.add(SubOperation())
+            '-', '–' -> tokens.add(SubOperation())
             '*' -> tokens.add(MulOperation())
             '/' -> tokens.add(DivOperation())
-            '\u0000' -> return EndState(tokens)
+            0.toChar() -> return EndState(tokens)
             ' ' -> return this
             else ->  return if (c.isDigit()) NumberState(c, tokens) else ErrorState(c, tokens)
         }

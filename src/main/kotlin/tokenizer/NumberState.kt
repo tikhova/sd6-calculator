@@ -16,9 +16,8 @@ class NumberState(digit: Char, private val tokens: MutableList<Token>): State {
             tokens.add(NumberToken(value))
 
             val newState = StartState(tokens)
-            newState.consume(c)
 
-            return newState
+            return newState.consume(c)
         }
     }
 

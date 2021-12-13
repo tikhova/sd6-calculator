@@ -31,11 +31,12 @@ class ParserVisitor(private val tokens: List<Token>): TokenVisitor {
         if (token.isOpening()) {
             operationStack.add(token)
         } else {
-            while (!(operationStack.last() is Brace && (operationStack.last() as Brace).isOpening())) {
+            while (operationStack.isNotEmpty() &&
+                !(operationStack.last() is Brace && (operationStack.last() as Brace).isOpening())) {
                 expression.add(operationStack.removeLast())
             }
 
-            if (operationStack.last() is Brace) {
+            if (operationStack.isNotEmpty() && operationStack.last() is Brace) {
                 operationStack.removeLast()
             } else {
                 throw Exception("Incorrectly placed braces")

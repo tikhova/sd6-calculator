@@ -8,4 +8,6 @@ abstract class Operation: Token {
     }
 
     abstract fun getPriority(): Int
+
+    abstract fun apply(a: Long, b: Long): Long
 }
